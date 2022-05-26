@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9bb53ce-7de6-4f00-94ff-f556fdabdb85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/0315/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0315/practice1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0315/practice2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0315/thresholding.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0322/practice1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0322/practice2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0322/practice3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0329/practice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0412/practice1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0412/practice2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0503/practice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0510/exercise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0517/practice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TermProject/edo1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TermProject/edo2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TermProject/level1_21811954.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TermProject/level2_21811954.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0517/practice.py" beforeDir="false" afterPath="$PROJECT_DIR$/0517/practice.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,23 +46,28 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/0517/practice.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TermProject/level2_21811954.py" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\parkwy\PycharmProjects\ComputerVision\TermProject" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="practice" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="level2_21811954" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="D:\Users\parkwy\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0517" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TermProject" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0517/practice.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TermProject/level2_21811954.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
