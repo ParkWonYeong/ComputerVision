@@ -1,5 +1,7 @@
 ## level 1 : 상하 영상에 대한 사전정보가 없는 두 개 이미지에 대한 stitching ##
 
+from tkinter import *
+from tkinter import filedialog
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -12,15 +14,17 @@ def check_order(M, img1, img2):
     if cnt != 0:
         return
 
-    if M[0][2] < 0:                 # 반대로 들어온 값이라서 음수인 경우
+    print("M[1][2] = ", M[1][2])
+
+    if M[1][2] < 0:                 # 반대로 들어온 값이라서 음수인 경우
         cnt += 1
-        print("위: img1")
-        print("아래: img2")
+        print("img1: 위")
+        print("img2: 아래")
         main_code(img2, img1)
 
     else:
-        print("위: img2")
-        print("아래: img1")
+        print("img1: 아래")
+        print("img2: 위")
 
 def main_code(img1, img2):
     MIN_MATCH_COUNT = 4
@@ -51,7 +55,7 @@ def main_code(img1, img2):
 
         M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
         # M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RHO)     # Without RANSAC
-
+        print(M)
         check_order(M, img1, img2)
         orimg = img1
         global cnt
@@ -64,7 +68,7 @@ def main_code(img1, img2):
         pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
         dst = cv2.perspectiveTransform(pts, M)
 
-        img2 = cv2.polylines(img2, [np.int32(dst)], True, 255, 3, cv2.LINE_AA)
+        # img2 = cv2.polylines(img2, [np.int32(dst)], True, 255, 3, cv2.LINE_AA)
 
     else:
         print("Not enough matches are fount - %d/%d" % (len(good), MIN_MATCH_COUNT))
@@ -86,8 +90,6 @@ def main_code(img1, img2):
 
     dst = cv2.warpPerspective(orimg, M, (width, height))
 
-    cv2.imshow("Warping right to left", dst), plt.show()
-
     dst[0:img2.shape[0], 0:img2.shape[1]] = img2
 
     cv2.imshow("Stitching", dst), plt.show()
@@ -97,8 +99,14 @@ def main_code(img1, img2):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+### main ###
 
-img1 = cv2.imread('bottom.jpg', 3)
-img2 = cv2.imread('top.jpg', 3)
-main_code(img1, img2)
+## Call 2 Images from File
+img = []
+for _ in range(2):
+    root = Tk()
+    path = filedialog.askopenfilename(initialdir = "D:/DATA_", title = "choose first image", filetypes = (("jpeg files", "*jpg"), ("all files", "*.*")))
+    img.append(cv2.imread(path))
+    root.withdraw()
 
+main_code(img[0], img[1])

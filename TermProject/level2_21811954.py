@@ -1,6 +1,7 @@
 ## level 2 : 사용자가 입력하는 순서대로 상단-중상단-중하단-하단 4단계 Stitchiing ##
 
-
+from tkinter import *
+from tkinter import filedialog
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -34,7 +35,6 @@ def main_code(img1, img2, orimg):
         dst_pts = np.float32([kp2[m.trainIdx].pt for m in good]).reshape(-1, 1, 2)
 
         M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
-        # M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RHO)     # Without RANSAC
 
         matchesMask = mask.ravel().tolist()
 
@@ -42,7 +42,7 @@ def main_code(img1, img2, orimg):
         pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
         dst = cv2.perspectiveTransform(pts, M)
 
-        img2 = cv2.polylines(img2, [np.int32(dst)], True, 255, 3, cv2.LINE_AA)
+        # img2 = cv2.polylines(img2, [np.int32(dst)], True, 255, 3, cv2.LINE_AA)
 
     else:
         print("Not enough matches are fount - %d/%d" % (len(good), MIN_MATCH_COUNT))
@@ -64,24 +64,23 @@ def main_code(img1, img2, orimg):
 
     dst = cv2.warpPerspective(orimg, M, (width, height))
 
-    cv2.imshow("Warping right to left", dst), plt.show()
-
     dst[0:img2.shape[0], 0:img2.shape[1]] = img2
     cv2.imshow("Stitching", dst), plt.show()
 
     return dst
 
+Image = []
+for _ in range(4):
+    root = Tk()
+    path = filedialog.askopenfilename(initialdir = "D:/DATA_", title = "choose first image", filetypes = (("jpeg files", "*jpg"), ("all files", "*.*")))
+    Image.append(cv2.imread(path))
+    root.withdraw()
 
-img1 = cv2.imread('Ttop(1).jpg', 3)
-img2 = cv2.imread('Top(2).jpg', 3)
-img3 = cv2.imread('Bottom(3).jpg', 3)
-img4 = cv2.imread('Bbottom(4).jpg', 3)
-
-Images = [img4, img3, img2, img1]
+Image.reverse()         # 입력시 상,중상,중하,하 순으로 입력 하므로 순서를 reverse 하여 적절한 순서로 재배치.
 num = [0]*5
-num[0] = img4
+num[0] = Image[0]
 for i in range(1,4):
-    num[i] = main_code(num[i-1], Images[i], num[i-1])
+    num[i] = main_code(num[i-1], Image[i], num[i-1])
 
 cv2.imshow("Stitching", num[3]), plt.show()
 cv2.waitKey(0)
